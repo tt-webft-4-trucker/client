@@ -4,9 +4,6 @@ import React from 'react';
 /**
  * CUSTOM IMPORTS
  */
-
-
-
 export default function FeaturedCard( props ){
     //add props later once when know what we want to display.
     const { img } = props;

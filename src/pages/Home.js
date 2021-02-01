@@ -1,9 +1,20 @@
 import React from 'react';
 
-export default function Home( props ){
 
+import Featured from '../components/Featured';
+
+ //replace later - just setting up boiler plate for now.
+ import picture1 from '../images/pic01.jpg';
+
+export default function Home( props ){
+  
+  const fake = {
+    img: picture1,
+  }
 
   return(
-    <p>New Component</p>
+    <div>
+      <Featured details={ fake }/>
+    </div>
   );
 }
