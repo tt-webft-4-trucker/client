@@ -13,7 +13,7 @@ export default function FeaturedCard( props ){
   return(
     <div class="col-4 col-12-medium">
         <section class="box feature">
-            <a href="#" class="image featured"><img src={ img } alt="" /></a>
+            <a href="/" class="image featured"><img src={ img } alt="" /></a>
             <div class="inner">
                 <header>
                     <h2>Put something here</h2>
