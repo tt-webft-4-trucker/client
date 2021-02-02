@@ -6,7 +6,6 @@ export default function LoginForm(props) {
   const onSubmit = (e) => {
     e.preventDefault();
     submit();
-    console.log(values);
   };
 
   const onChange = (e) => {

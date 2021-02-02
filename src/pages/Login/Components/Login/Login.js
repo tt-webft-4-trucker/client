@@ -6,12 +6,12 @@ import Schema from "../../Schema/LoginSchema.js";
 import LoginForm from "./LoginForm.js";
 
 const initialFormValues = {
-  username: "",
+  email: "",
   password: "",
 };
 
 const initialFormErrors = {
-  username: "",
+  email: "",
   password: "",
 };
 
@@ -24,13 +24,13 @@ export default function Login() {
   const [errors, setErrors] = useState(initialFormErrors);
   const [users, setUsers] = useState(initialUsers);
 
-  const createNewUser = (newUser) => {
+  const loginUser = (user) => {
     axios
-      .post("https://reqres.in/api/users", newUser)
+      .post("https://truck-server.herokuapp.com/login", user)
       .then((res) => {
         setUsers([res.data, ...users]);
+        localStorage.setItem("token", res.data.token);
         setFormValues(initialFormValues);
-        console.log(res.data)
       })
       .catch((err) => {
         console.log(err.res);
@@ -61,10 +61,10 @@ export default function Login() {
 
   const submitForm = () => {
     const newUser = {
-      name: formValues.username,
+      email: formValues.email,
       password: formValues.password,
     };
-    createNewUser(newUser);
+    loginUser(newUser);
   };
 
   useEffect(() => {

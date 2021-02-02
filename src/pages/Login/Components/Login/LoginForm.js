@@ -22,15 +22,15 @@ export default function LoginForm(props) {
         <form onSubmit={onSubmit}>
           <div>
             <label>
-              Username:
+              Email:
               <input
                 type="text"
-                name="username"
+                name="email"
                 onChange={onChange}
-                value={values.username}
+                value={values.email}
               />
             </label>
-            <p>{errors.username}</p>
+            <p>{errors.email}</p>
           </div>
           <div>
             <label>
