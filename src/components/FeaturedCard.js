@@ -6,17 +6,17 @@ import React from 'react';
  */
 export default function FeaturedCard( props ){
     //add props later once when know what we want to display.
-    const { img } = props;
+    const { details } = props;
   return(
     <div class="col-4 col-12-medium">
         <section class="box feature">
-            <a href="/" class="image featured"><img src={ img } alt="" /></a>
+            <a href="/" class="image featured"><img src={ details.img_url } alt="" /></a>
             <div class="inner">
                 <header>
-                    <h2>Put something here</h2>
-                    <p>Maybe here as well I think</p>
+                    <h2>{ details.name }</h2>
+                    <p>Rating: { details.customer_rating_avg }</p>
                 </header>
-                <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
+                <p>Cuisine Type: { details.cuisine_type }</p>
             </div>
         </section>        
     </div>
