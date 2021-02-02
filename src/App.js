@@ -9,8 +9,6 @@ import React from "react";
  */
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Banner from "./components/Banner";
-import Content from "./components/Content";
 import FoodTruckView from "./FoodTruckView";
 import Login from "./pages/Login/Components/Login/Login.js";
 import Register from "./pages/Login/Components/Register/Register.js";
@@ -24,7 +22,6 @@ function App() {
       <main>
         <Switch>
           <Route exact path="/">
-            <Banner />
             <Home />
           </Route>
           <Route path="/trucks/:id" component={FoodTruckView} />
@@ -33,7 +30,6 @@ function App() {
         </Switch>
       </main>
 
-      <Content />
       <Footer />
     </div>
   );
