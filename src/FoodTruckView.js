@@ -83,7 +83,8 @@ const MenuItemStyle = styled.div`
     flex-direction: column;
     background-color: #F9F9F9;
     border: 1px solid #3C3C3C;
-    width: 26rem;
+    /* width: 26rem; */
+    width: 14rem;
     margin: 2rem;
     border-radius: .5rem;
     padding: 1rem;
@@ -91,6 +92,7 @@ const MenuItemStyle = styled.div`
 
     .itemName {
         display: flex;
+        text-align: left;
         color: #3C3C3C;
         margin-top: 2px;
     }
