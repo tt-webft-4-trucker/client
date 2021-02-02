@@ -9,28 +9,28 @@ import React  from 'react';
  */
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Banner from './components/Banner';
-import Content from './components/Content';
+
+
 
 import Home from './pages/Home';
+import AddTruck from './pages/AddTruck';
 
 
 function App() {
   return (
     <div className="page-wrapper">
       <Header />
-      <Banner />
-      
       <Switch>
+
+        <Route path="/newtruck">
+          <AddTruck />
+        </Route>
 
         <Route path='/'>
           <Home />
         </Route>
 
       </Switch>
-
-
-      <Content />
       <Footer />
     </div>
   );
