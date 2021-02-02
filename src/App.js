@@ -13,6 +13,7 @@ import FoodTruckView from "./FoodTruckView";
 import Login from "./pages/Login/Components/Login/Login.js";
 import Register from "./pages/Login/Components/Register/Register.js";
 import Home from "./pages/Home";
+import AddTruck from "./pages/AddTruck";
 
 function App() {
   return (
@@ -21,9 +22,8 @@ function App() {
 
       <main>
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
+          <Route exact path="/" component={Home} />
+          <Route path="/newtruck" component={AddTruck} />
           <Route path="/trucks/:id" component={FoodTruckView} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
