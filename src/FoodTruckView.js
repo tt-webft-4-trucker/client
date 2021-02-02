@@ -82,7 +82,7 @@ const MenuItemStyle = styled.div`
     display: flex;
     flex-direction: column;
     background-color: #F9F9F9;
-    border: 1px solid #3C3C3C;
+    border: 1px solid #979797;
     /* width: 26rem; */
     width: 14rem;
     margin: 2rem;
