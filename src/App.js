@@ -1,8 +1,10 @@
 import "./App.css";
 import "./assets/css/main.css";
 
-import { Switch, Route } from "react-router-dom";
-import React from "react";
+
+import { Switch, Route } from 'react-router-dom';
+import React  from 'react';
+
 
 /**
  * CUSTOM IMPORTS
