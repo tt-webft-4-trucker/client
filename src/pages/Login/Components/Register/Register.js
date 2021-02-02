@@ -9,7 +9,6 @@ const initialFormValues = {
   username: "",
   email: "",
   password: "",
-  passwordConfirm: "",
   role: "",
 };
 
@@ -17,7 +16,6 @@ const initialFormErrors = {
   username: "",
   email: "",
   password: "",
-  passwordConfirm: "",
   role: "",
 };
 

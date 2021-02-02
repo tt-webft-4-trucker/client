@@ -10,9 +10,5 @@ export default Yup.object().shape({
   password: Yup.string()
     .required("Password is required")
     .min(4, "Passwords must be at least 4 characters long"),
-  passwordConfirm: Yup.string().oneOf(
-    [Yup.ref("password"), null],
-    "Passwords must match"
-  ),
   role: Yup.string().oneOf(["diner", "operator"], "type is required"),
 });

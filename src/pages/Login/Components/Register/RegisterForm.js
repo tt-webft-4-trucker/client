@@ -66,18 +66,6 @@ export default function LoginForm(props) {
           <p>{errors.password}</p>
         </div>
         <div>
-          <label>
-            Confirm your password
-            <input
-              type="text"
-              name="passwordConfirm"
-              onChange={onChange}
-              value={values.passwordConfirm}
-            />
-          </label>
-          <p>{errors.passwordConfirm}</p>
-        </div>
-        <div>
           <button type="submit" disabled={disabled}>
             Create Account
           </button>
