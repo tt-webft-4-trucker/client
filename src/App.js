@@ -14,26 +14,28 @@ import Login from "./pages/Login/Components/Login/Login.js";
 import Register from "./pages/Login/Components/Register/Register.js";
 import Home from "./pages/Home";
 import { UserContext } from "./utils/UserContext";
+import AddTruck from "./pages/AddTruck";
 
 function App() {
   const [user, setUser] = useState({});
   return (
-    <UserContext.Provider value={{ user, setUser }}>
-      <div className="page-wrapper">
+    <div className="page-wrapper">
+      <UserContext.Provider value={{ user, setUser }}>
         <Header />
+
         <main>
           <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
+            <Route exact path="/" component={Home} />
+            <Route path="/newtruck" component={AddTruck} />
             <Route path="/trucks/:id" component={FoodTruckView} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
           </Switch>
         </main>
+
         <Footer />
-      </div>
-    </UserContext.Provider>
+      </UserContext.Provider>
+    </div>
   );
 }
 
