@@ -13,8 +13,8 @@ export default function Header( props ){
 
             <nav id="nav">
                 <ul>
-                    <li><a href="/">Register</a></li>
-                    <li class="current"><a href="/">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                    <li class="current"><a href="/login">Login</a></li>
                 </ul>
             </nav>
 
