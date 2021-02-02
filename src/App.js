@@ -2,7 +2,7 @@ import './App.css';
 import './assets/css/main.css';
 
 import { Switch, Route } from 'react-router-dom';
-import React, { useState } from 'react';
+import React  from 'react';
 
 /**
  * CUSTOM IMPORTS
