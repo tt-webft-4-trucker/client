@@ -28,14 +28,15 @@ export default function Register() {
   const [buttonDisable, setButtonDisable] = useState(buttonDisabled);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [errors, setErrors] = useState(initialFormErrors);
-  const [users, setUsers] = useState(initialUsers);
+  const [user, setUser] = useState(initialUsers);
 
   const createNewUser = (newUser) => {
     axios
-      .post("https://reqres.in/api/users", newUser)
+      .post("https://truck-server.herokuapp.com/profiles/", newUser)
       .then((res) => {
-        setUsers([res.data, ...users]);
+        setUser(res.data.profile);
         setFormValues(initialFormValues);
+        localStorage.setItem("token", res.data.token);
         console.log(res.data)
       })
       .catch((err) => {
@@ -70,7 +71,6 @@ export default function Register() {
       name: formValues.username,
       email: formValues.email,
       password: formValues.password,
-      passwordConfirm: formValues.passwordConfirm,
       role: formValues.role,
     };
     createNewUser(newUser);
