@@ -4,9 +4,7 @@ import "./assets/css/main.css";
 import { Switch, Route } from "react-router-dom";
 import React, { useState } from "react";
 
-/**
- * CUSTOM IMPORTS
- */
+// Components 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FoodTruckView from "./FoodTruckView";
@@ -21,6 +19,10 @@ import PrivateRoute from './utils/PrivateRoute';
 import { UserContext } from "./utils/UserContext";
 import { useProfile } from './utils/useProfile'
 
+
+// Utilities 
+import { UserContext } from "./utils/UserContext";
+import { useProfile } from './utils/useProfile'
 
 function App() {
   const [user, setUser] = useProfile();

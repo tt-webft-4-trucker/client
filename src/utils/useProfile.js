@@ -5,7 +5,6 @@ export const useProfile = () => {
     const profile = window.localStorage.getItem("profile");
     return profile ? JSON.parse(profile) : {};
   });
-
   const setUser = (profile) => {
     setProfile(profile);
     window.localStorage.setItem("profile", JSON.stringify(profile));
@@ -14,3 +13,4 @@ export const useProfile = () => {
 };
 
 export default useProfile;
+
