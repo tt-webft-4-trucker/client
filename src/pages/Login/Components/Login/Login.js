@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import * as Yup from "yup";
 import axios from "axios";
 
 import Schema from "../../Schema/LoginSchema.js";
 import LoginForm from "./LoginForm.js";
+import { UserContext } from "../../../../utils/UserContext";
 
 const initialFormValues = {
   email: "",
@@ -15,20 +16,19 @@ const initialFormErrors = {
   password: "",
 };
 
-const initialUsers = [];
 const buttonDisabled = true;
 
 export default function Login() {
   const [buttonDisable, setButtonDisable] = useState(buttonDisabled);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [errors, setErrors] = useState(initialFormErrors);
-  const [users, setUsers] = useState(initialUsers);
+  const { setUser } = useContext(UserContext);
 
   const loginUser = (user) => {
     axios
       .post("https://truck-server.herokuapp.com/login", user)
       .then((res) => {
-        setUsers([res.data, ...users]);
+        setUser(res.data.profile);
         localStorage.setItem("token", res.data.token);
         setFormValues(initialFormValues);
       })
@@ -87,7 +87,9 @@ export default function Login() {
 
       <div>
         <button type="link-to-reg">
-          <a class="link-to-reg" href="/register">New to Food Truck Tracker? Click Here</a>
+          <a class="link-to-reg" href="/register">
+            New to Food Truck Tracker? Click Here
+          </a>
         </button>
       </div>
     </div>

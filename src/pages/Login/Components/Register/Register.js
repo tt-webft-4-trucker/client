@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import * as Yup from "yup";
 import axios from "axios";
 
 import Schema from "../../Schema/RegisterSchema.js";
 import RegisterForm from "./RegisterForm.js"
+import { UserContext } from "../../../../utils/UserContext";
 
 const initialFormValues = {
   username: "",
@@ -19,14 +20,13 @@ const initialFormErrors = {
   role: "",
 };
 
-const initialUsers = [];
 const buttonDisabled = true;
 
 export default function Register() {
   const [buttonDisable, setButtonDisable] = useState(buttonDisabled);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [errors, setErrors] = useState(initialFormErrors);
-  const [user, setUser] = useState(initialUsers);
+  const { setUser } = useContext(UserContext);
 
   const createNewUser = (newUser) => {
     axios
