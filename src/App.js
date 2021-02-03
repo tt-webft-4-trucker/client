@@ -15,6 +15,7 @@ import Register from "./pages/Login/Components/Register/Register.js";
 import Home from "./pages/Home";
 import { UserContext } from "./utils/UserContext";
 import AddTruck from "./pages/AddTruck";
+import NewMenu from "./pages/Menu/NewMenu";
 
 function App() {
   const [user, setUser] = useState({});
@@ -30,6 +31,7 @@ function App() {
             <Route path="/trucks/:id" component={FoodTruckView} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path="/newmenu" component={NewMenu}/>
           </Switch>
         </main>
 
