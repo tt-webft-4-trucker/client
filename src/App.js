@@ -12,6 +12,13 @@ import Login from "./pages/Login/Components/Login/Login.js";
 import Register from "./pages/Login/Components/Register/Register.js";
 import Home from "./pages/Home";
 import AddTruck from "./pages/AddTruck";
+import EditTruck from './pages/EditTruck';
+import PrivateRoute from './utils/PrivateRoute';
+
+// Utilities 
+import { UserContext } from "./utils/UserContext";
+import { useProfile } from './utils/useProfile'
+
 
 // Utilities 
 import { UserContext } from "./utils/UserContext";
@@ -19,7 +26,6 @@ import { useProfile } from './utils/useProfile'
 
 function App() {
   const [user, setUser] = useProfile();
-  
   return (
     <div className="page-wrapper">
       <UserContext.Provider value={{ user, setUser }}>
@@ -28,7 +34,8 @@ function App() {
         <main>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/newtruck" component={AddTruck} />
+            <PrivateRoute path="/newtruck" component={AddTruck} />
+            <PrivateRoute path="/edittruck" component={EditTruck} />
             <Route path="/trucks/:id" component={FoodTruckView} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />

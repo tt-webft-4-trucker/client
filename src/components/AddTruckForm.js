@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import axios from 'axios';
 import * as yup from 'yup';
 import schema from '../validation/addTruckSchema';
+import { UserContext } from "../utils/UserContext";
+
 
 const initFormVals = {
     name: '',
@@ -17,6 +19,9 @@ const initialTruck = [];
 const initialDisabled = true;
 
 export default function AddTruckForm( props ){
+
+ const { user } = useContext(UserContext);
+
  const [ truck, setTruck ] = useState( initialTruck );
  const [ formVals, setFormVals ] = useState( initFormVals );
  const [ formErrs, setFormErrs ] = useState( initFormErrors );
@@ -31,13 +36,15 @@ export default function AddTruckForm( props ){
 
 
     const submitForm = ( event ) => {
+        event.preventDefault();
         const newTruck = {
+            operator_id: user.operator_id,
             name: formVals.name.trim(),
-            cuisine_type: formVals.type.trim(),
+            cuisine_type: formVals.cuisine_type.trim(),
             img_url: formVals.img_url,
         }
-        event.preventDefault();
         postTruck( newTruck );
+        console.log( "Truck object added: ", newTruck )
     }
     
     const handleChange = ( name, value ) => {
@@ -69,13 +76,15 @@ export default function AddTruckForm( props ){
         schema.isValid( formVals ).then( valid => setDisabled( !valid ) )
     }, [ formVals ])
   return(
+      
     <div>
+        {console.log("Operator ID: ", user.operator_id)}
         <div id="main-wrapper">
-            <div class="container">
-                <div class="row gtr-200">
-                    <div class="col-8 col-12-large imp-medium">
+            <div className="container">
+                <div className="row gtr-200">
+                    <div className="col-8 col-12-large imp-medium">
                         <div id="content">
-                            <section class="last">
+                            <section className="last">
                                 <h2>Add Truck</h2>
                                 <form onSubmit={ submitForm }>
                                 <div className='errors'>
@@ -92,7 +101,7 @@ export default function AddTruckForm( props ){
                                 <label>Image URL:&nbsp;
                                     <input type='text' name='img_url' onChange={ onChange } value={ formVals.img_url } />
                                 </label>
-                                <button class="button icon solid fa-arrow-circle-right" disabled={ disabled }>Submit</button>
+                                <button className="button icon solid fa-arrow-circle-right" type="submit" disabled={ disabled }>Submit</button>
                                 </form>
                             </section>
                         </div>

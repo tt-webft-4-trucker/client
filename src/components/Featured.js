@@ -24,12 +24,12 @@ export default function Featured( props ){
   }, [])
   return(
     <div id="features-wrapper">
-    <div class="container">
-        <div class="row">
+    <div className="container">
+        <div className="row">
           {
             trucks.map( info => {
               return(
-                <FeaturedCard details={ info } />
+                <FeaturedCard details={ info } key={ info.truck_id }/>
               );
             })
           }

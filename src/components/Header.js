@@ -6,7 +6,7 @@ export default function Header(props) {
 
   return (
     <div id="header-wrapper">
-      <header id="header" class="container">
+      <header id="header" className="container">
         <div id="logo">
           <h1>
             <a href="/">Food Truck Tracker</a>
@@ -22,7 +22,7 @@ export default function Header(props) {
                 <li>
                   <a href="/register">Register</a>
                 </li>
-                <li class="current">
+                <li className="current">
                   <a href="/login">Login</a>
                 </li>
               </>

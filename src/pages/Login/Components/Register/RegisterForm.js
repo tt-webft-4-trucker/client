@@ -57,7 +57,7 @@ export default function LoginForm(props) {
           <label>
             Set your password
             <input
-              type="text"
+              type="password"
               name="password"
               onChange={onChange}
               value={values.password}

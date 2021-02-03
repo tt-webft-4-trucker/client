@@ -87,7 +87,7 @@ export default function Login() {
 
       <div>
         <button type="link-to-reg">
-          <a class="link-to-reg" href="/register">
+          <a className="link-to-reg" href="/register">
             New to Food Truck Tracker? Click Here
           </a>
         </button>
