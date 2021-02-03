@@ -38,7 +38,7 @@ export default function EditTruckForm( props ){
     }
     
     const editTruck = modifiedTruck => {
-        axios.put( `https://truck-server.herokuapp.com/trucks/${modifiedTruck.truck_id}`, modifiedTruck )
+        axios.put( `https://truck-server.herokuapp.com/trucks`, modifiedTruck )
         .then( res => setTruck( res.data ) )
         .catch( err => console.log( err ) )
     }
