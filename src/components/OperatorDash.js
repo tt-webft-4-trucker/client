@@ -6,23 +6,37 @@ import axios from 'axios';
 
 function OperatorDashboard(props) {
     const [ operator, setOperator ] = useState();
+    const [ trucks, setTrucks ] = useState([]);
 
     const { id } = useParams();
 
     useEffect(() => {
-        console.log('yo');
-        console.log(id);
         axios   
             .get(`https://truck-server.herokuapp.com/operator/${id}`)
             .then((res) => {
-                console.log(res.data)
                 setOperator(res.data)
+                setTrucks(res.data.trucks)
             })
             .catch((err) => {
                 console.log(err);
             })
-    }, [id]);
+    }, [id] );
 
+    /**
+     * DO NOT USE
+     * DO NOT USE
+     * DO NOT USE
+     * DO NOT USE
+     * not working yet.
+     */
+    const deleteTruck = ( truckID ) =>{
+        axios.delete(`https://truck-server.herokuapp.com/trucks/${ truckID }`)
+        .then( res =>{
+            setTrucks(res.data);
+            console.log("Trucks: ", trucks)
+        })
+        .catch( err => console.log( err ) )
+    }
     
 
     if(!operator) {
@@ -30,6 +44,7 @@ function OperatorDashboard(props) {
     }
     
     return (
+        
         <OperatorStyle>
             <div className='operatorHeader'>
                 <h1>Operator Dashboard</h1>
@@ -49,6 +64,7 @@ function OperatorDashboard(props) {
                                 <p className='info'>Average Rating: {item.customer_rating_avg}</p>
                                 <p className='info lastItem'>Location: {item.current_location}</p>
                                 <Link to={`/edittruck/${item.truck_id}`} className="button icon solid">Edit</Link>
+                                <button className="button solid danger">Delete</button>
                             </div>
                         )
                     })
@@ -107,8 +123,4 @@ const OperatorStyle = styled.div`
     .lastItem {
         margin-bottom: 1.5rem;
     }
-
-
-     
-
-`
+`;

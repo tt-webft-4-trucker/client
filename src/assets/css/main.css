@@ -1724,6 +1724,30 @@ input, select, textarea {
 			padding: 0.8em 0.9em;
 		}
 
+		input[type="button"].danger,
+		input[type="submit"].danger,
+		input[type="reset"].danger,
+		button.danger,
+		.button.danger {
+			background: #ff5b5b;
+		}
+
+			input[type="button"].danger:hover,
+			input[type="submit"].danger:hover,
+			input[type="reset"].danger:hover,
+			button.danger:hover,
+			.button.danger:hover {
+				background: #ff8181;
+			}
+
+			input[type="button"].danger:active,
+			input[type="submit"].danger:active,
+			input[type="reset"].danger:active,
+			button.danger:active,
+			.button.danger:active {
+				background: #e45050;
+			}
+
 
 /* List */
 
