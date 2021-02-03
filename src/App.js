@@ -2,7 +2,7 @@ import "./App.css";
 import "./assets/css/main.css";
 
 import { Switch, Route } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 
 
 /**
@@ -38,13 +38,11 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <PrivateRoute path="/newtruck" component={AddTruck} />
-            <PrivateRoute path="/edittruck" component={EditTruck} />
             <Route path="/trucks/:id" component={FoodTruckView} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <PrivateRoute path='/operator/:id'>
-              <OperatorDashboard />
-            </PrivateRoute>
+            <PrivateRoute path='/operator/:id' component={OperatorDashboard}/>
+            <PrivateRoute path='/edittruck/:id' component={EditTruck}/>
           </Switch>
         </main>
 

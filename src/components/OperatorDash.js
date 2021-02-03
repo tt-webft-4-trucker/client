@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -34,8 +34,7 @@ function OperatorDashboard(props) {
             <div className='operatorHeader'>
                 <h1>Operator Dashboard</h1>
                 <div>
-                    <button>Add new truck</button>
-                    <button>Edit my truck</button>
+                <Link to={`/newtruck`} className="button icon solid">Add new truck</Link>
                 </div>
             </div>
 
@@ -49,6 +48,7 @@ function OperatorDashboard(props) {
                                 <p className='info'>Truck ID: {item.truck_id}</p>
                                 <p className='info'>Average Rating: {item.customer_rating_avg}</p>
                                 <p className='info lastItem'>Location: {item.current_location}</p>
+                                <Link to={`/edittruck/${item.truck_id}`} className="button icon solid">Edit</Link>
                             </div>
                         )
                     })
