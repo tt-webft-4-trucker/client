@@ -7,32 +7,40 @@ import React  from 'react';
 /**
  * CUSTOM IMPORTS
  */
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Banner from './components/Banner';
-import Content from './components/Content';
+// import Header from './components/Header';
+// import Footer from './components/Footer';
+// import Banner from './components/Banner';
+// import Content from './components/Content';
+
+import OperatorDashboard from './components/OperatorDash';
 
 import Home from './pages/Home';
 
 
 function App() {
   return (
-    <div className="page-wrapper">
-      <Header />
-      <Banner />
+    // <div className="page-wrapper">
+    //   <Header />
+    //   <Banner />
       
-      <Switch>
+    //   <Switch>
 
-        <Route path='/'>
-          <Home />
-        </Route>
+    //     <Route path='/'>
+    //       <Home />
+    //     </Route>
 
-      </Switch>
+        
+    //         <OperatorDashboard />
 
+    //   </Switch>
 
-      <Content />
-      <Footer />
-    </div>
+      <Route path='/operator/:id'>
+        <OperatorDashboard />
+      </Route>
+
+      // <Content />
+      // <Footer /> 
+    // </div>
   );
 }
 
