@@ -1,5 +1,7 @@
 import React from "react";
 
+import styled from 'styled-components';
+
 export default function LoginForm(props) {
   const { disabled, values, change, submit, errors } = props;
 
@@ -15,7 +17,7 @@ export default function LoginForm(props) {
   };
 
   return (
-    <div>
+    <LoginStyle>
       <h1>Welcome Back!</h1>
 
       <div>
@@ -51,6 +53,22 @@ export default function LoginForm(props) {
           </div>
         </form>
       </div>
-    </div>
+    </LoginStyle>
   );
 }
+
+
+  const LoginStyle = styled.div`
+    background-color: white;
+    border: 1px solid #CDCDCD;
+    border-radius: 8px;
+    width: 30rem;
+    padding: 2rem;
+    margin: auto;
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  `
