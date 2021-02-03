@@ -1,46 +1,56 @@
-import './App.css';
-import './assets/css/main.css';
+import "./App.css";
+import "./assets/css/main.css";
 
-import { Switch, Route } from 'react-router-dom';
-import React  from 'react';
+import { Switch, Route } from "react-router-dom";
+import React, { useState } from "react";
+
 
 /**
  * CUSTOM IMPORTS
  */
- import Header from './components/Header';
- import Footer from './components/Footer';
- import Banner from './components/Banner';
- import Content from './components/Content';
 
+// Components 
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import FoodTruckView from "./FoodTruckView";
+import Login from "./pages/Login/Components/Login/Login.js";
+import Register from "./pages/Login/Components/Register/Register.js";
+import Home from "./pages/Home";
+import AddTruck from "./pages/AddTruck";
+import EditTruck from './pages/EditTruck';
+import PrivateRoute from './utils/PrivateRoute';
 import OperatorDashboard from './components/OperatorDash';
 
-import Home from './pages/Home';
 
+// Utilities 
+import { UserContext } from "./utils/UserContext";
+import { useProfile } from './utils/useProfile'
 
 function App() {
+  const [user, setUser] = useProfile();
   return (
-     <div className="page-wrapper">
-       <Header />
-       <Banner />
-      
-       <Switch>
 
-         <Route path='/'>
-           <Home />
-         </Route>
+    <div className="page-wrapper">
+      <UserContext.Provider value={{ user, setUser }}>
+        <Header />
 
-        
-             <OperatorDashboard />
+        <main>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <PrivateRoute path="/newtruck" component={AddTruck} />
+            <PrivateRoute path="/edittruck" component={EditTruck} />
+            <Route path="/trucks/:id" component={FoodTruckView} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <PrivateRoute path='/operator/:id'>
+              <OperatorDashboard />
+            </PrivateRoute>
+          </Switch>
+        </main>
 
-       </Switch>
-
-      <Route path='/operator/:id'>
-        <OperatorDashboard />
-      </Route>
-
-       <Content />
-       <Footer /> 
-     </div>
+        <Footer />
+      </UserContext.Provider>
+    </div>
   );
 }
 

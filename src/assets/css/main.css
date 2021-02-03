@@ -74,6 +74,15 @@ input, select, textarea {
 
 /* Basic */
 
+	/* Change color of text for form validation */
+	.errors{
+		color:red;
+		font-weight:bold;
+	}
+	.success{
+		color:green;
+		font-weight:bold;
+	}
 	@-ms-viewport {
 		width: device-width;
 	}
@@ -122,7 +131,7 @@ input, select, textarea {
 	}
 
 	a {
-		color: #0090c5;
+		color: white;
 		text-decoration: underline;
 	}
 
@@ -1621,7 +1630,13 @@ input, select, textarea {
 			}
 
 /* Button */
-
+	/* disabled button color */
+	button:disabled,
+	button[disabled],
+	button:disabled:hover,
+	button[disabled]:hover{
+		background:#77d0f1;
+	}
 	input[type="button"],
 	input[type="submit"],
 	input[type="reset"],
@@ -1708,6 +1723,7 @@ input, select, textarea {
 			font-size: 2.25em;
 			padding: 0.8em 0.9em;
 		}
+
 
 /* List */
 

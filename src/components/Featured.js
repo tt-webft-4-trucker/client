@@ -1,4 +1,5 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 
 
 /**
@@ -10,13 +11,28 @@ import FeaturedCard from './FeaturedCard';
 
 export default function Featured( props ){
 
-  const { details } = props;
+  const [ trucks, setTrucks ] = useState( [] );
 
+  const fetchTrucks = () => {
+    axios.get( `https://truck-server.herokuapp.com/trucks` )
+      .then( res => setTrucks( res.data ) )
+      .catch( err => console.log( err ) );
+  }
+
+  useEffect( () => {
+    fetchTrucks();
+  }, [])
   return(
     <div id="features-wrapper">
-    <div class="container">
-        <div class="row">
-            <FeaturedCard img={ details.img } />
+    <div className="container">
+        <div className="row">
+          {
+            trucks.map( info => {
+              return(
+                <FeaturedCard details={ info } key={ info.truck_id }/>
+              );
+            })
+          }
         </div>
     </div>
 </div>
