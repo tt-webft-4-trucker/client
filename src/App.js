@@ -20,6 +20,7 @@ import AddTruck from "./pages/AddTruck";
 import EditTruck from './pages/EditTruck';
 import PrivateRoute from './utils/PrivateRoute';
 import OperatorDashboard from './components/OperatorDash';
+import NewMenu from "./pages/Menu/NewMenu";
 
 
 // Utilities 
@@ -42,6 +43,7 @@ function App() {
             <Route path="/trucks/:id" component={FoodTruckView} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path="/newmenu" component={NewMenu}/>
             <PrivateRoute path='/operator/:id'>
               <OperatorDashboard />
             </PrivateRoute>
