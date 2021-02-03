@@ -5,14 +5,14 @@ export default function Footer( props ){
 
   return(
 				<div id="footer-wrapper">
-					<footer id="footer" class="container">
-						<div class="row">
-							<div class="col-3 col-6-medium col-12-small">
+					<footer id="footer" className="container">
+						<div className="row">
+							<div className="col-3 col-6-medium col-12-small">
 
 
-									<section class="widget links">
+									<section className="widget links">
 										<h3>Random Stuff</h3>
-										<ul class="style2">
+										<ul className="style2">
 											<li><a href="/">Etiam feugiat condimentum</a></li>
 											<li><a href="/">Aliquam imperdiet suscipit odio</a></li>
 											<li><a href="/">Sed porttitor cras in erat nec</a></li>
@@ -22,11 +22,11 @@ export default function Footer( props ){
 									</section>
 
 							</div>
-							<div class="col-3 col-6-medium col-12-small">
+							<div className="col-3 col-6-medium col-12-small">
 
-									<section class="widget links">
+									<section className="widget links">
 										<h3>Random Stuff</h3>
-										<ul class="style2">
+										<ul className="style2">
 											<li><a href="/">Etiam feugiat condimentum</a></li>
 											<li><a href="/">Aliquam imperdiet suscipit odio</a></li>
 											<li><a href="/">Sed porttitor cras in erat nec</a></li>
@@ -36,12 +36,12 @@ export default function Footer( props ){
 									</section>
 
 							</div>
-							<div class="col-3 col-6-medium col-12-small">
+							<div className="col-3 col-6-medium col-12-small">
 
 
-									<section class="widget links">
+									<section className="widget links">
 										<h3>Random Stuff</h3>
-										<ul class="style2">
+										<ul className="style2">
 											<li><a href="/">Etiam feugiat condimentum</a></li>
 											<li><a href="/">Aliquam imperdiet suscipit odio</a></li>
 											<li><a href="/">Sed porttitor cras in erat nec</a></li>
@@ -51,17 +51,17 @@ export default function Footer( props ){
 									</section>
 
 							</div>
-							<div class="col-3 col-6-medium col-12-small">
+							<div className="col-3 col-6-medium col-12-small">
 
 
-									<section class="widget contact last">
+									<section className="widget contact last">
 										<h3>Contact Us</h3>
 										<ul>
-											<li><a href="/" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-											<li><a href="/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-											<li><a href="/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-											<li><a href="/" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-											<li><a href="/" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a></li>
+											<li><a href="/" className="icon brands fa-twitter"><span className="label">Twitter</span></a></li>
+											<li><a href="/" className="icon brands fa-facebook-f"><span className="label">Facebook</span></a></li>
+											<li><a href="/" className="icon brands fa-instagram"><span className="label">Instagram</span></a></li>
+											<li><a href="/" className="icon brands fa-dribbble"><span className="label">Dribbble</span></a></li>
+											<li><a href="/" className="icon brands fa-pinterest"><span className="label">Pinterest</span></a></li>
 										</ul>
 										<p>1234 Fictional Road<br />
 										Nashville, TN 00000<br />
@@ -70,10 +70,10 @@ export default function Footer( props ){
 
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-12">
+						<div className="row">
+							<div className="col-12">
 								<div id="copyright">
-									<ul class="menu">
+									<ul className="menu">
 										<li>&copy; Food Truck TrackR. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 									</ul>
 								</div>

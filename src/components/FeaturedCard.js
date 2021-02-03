@@ -8,10 +8,10 @@ export default function FeaturedCard( props ){
     //add props later once when know what we want to display.
     const { details } = props;
   return(
-    <div class="col-4 col-12-medium">
-        <section class="box feature">
-            <a href="/" class="image featured"><img src={ details.img_url } alt="" /></a>
-            <div class="inner">
+    <div className="col-4 col-12-medium">
+        <section className="box feature">
+            <a href="/" className="image featured"><img src={ details.img_url } alt="" /></a>
+            <div className="inner">
                 <header>
                     <h2>{ details.name }</h2>
                     <p>Rating: { details.customer_rating_avg }</p>
