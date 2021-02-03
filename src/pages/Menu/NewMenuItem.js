@@ -3,7 +3,12 @@ import React, { useState, useEffect } from 'react';
 
 export default function NewMenuItem(props) {
     const { menuItems, setMenuItems } = props;
-    const [formValues, setFormValues] = useState ({})
+    const [formValues, setFormValues] = useState ({
+        dishname: '',
+        dishdescription: '',
+        price: '',
+        image: '',
+    })
     const [errors, setErrors] = useState({name:''})
     
     
@@ -11,6 +16,12 @@ export default function NewMenuItem(props) {
     const onSubmit = (e) => {
         e.preventDefault()
         setMenuItems( [...menuItems, formValues] )
+        setFormValues({
+            dishname: '',
+            dishdescription: '',
+            price: '',
+            image: '',
+        })
     }
 
     const onChange = (e) => {
@@ -79,6 +90,17 @@ export default function NewMenuItem(props) {
                         </button>
                     </div>
                 </form>
+                <div>
+
+                    {menuItems && menuItems.map(menuItem => (
+                        <div>
+                            <p>{menuItem.dishname}</p>
+                            <p>{menuItem.dishdescription}</p>
+                            <p>{menuItem.price}</p>
+                            <p>{menuItem.image}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )
