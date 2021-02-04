@@ -21,6 +21,8 @@ import EditTruck from './pages/EditTruck';
 import PrivateRoute from './utils/PrivateRoute';
 import OperatorDashboard from './components/OperatorDash';
 
+import Map from './pages/Map';
+
 
 // Utilities 
 import { UserContext } from "./utils/UserContext";
@@ -43,6 +45,8 @@ function App() {
             <Route path="/register" component={Register} />
             <PrivateRoute path='/operator/:id' component={OperatorDashboard}/>
             <PrivateRoute path='/edittruck/:id' component={EditTruck}/>
+
+            <Route path="/map" component={ Map } />
           </Switch>
         </main>
 
