@@ -2,7 +2,7 @@ import "./App.css";
 import "./assets/css/main.css";
 
 import { Switch, Route } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 
 
 /**
@@ -19,8 +19,8 @@ import Home from "./pages/Home";
 import AddTruck from "./pages/AddTruck";
 import EditTruck from './pages/EditTruck';
 import PrivateRoute from './utils/PrivateRoute';
-import OperatorDashboard from './components/OperatorDash';
-
+import OperatorDash from './components/OperatorDash';
+import DinerDash from './components/DinerDash';
 
 // Utilities 
 import { UserContext } from "./utils/UserContext";
@@ -42,8 +42,11 @@ function App() {
             <Route path="/trucks/:id" component={FoodTruckView} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <PrivateRoute path='/operator/:id'>
-              <OperatorDashboard />
+            <PrivateRoute path='/operator/:id' component={OperatorDash}>
+              <OperatorDash />
+            </PrivateRoute>
+            <PrivateRoute path='/dinerdash' component={DinerDash}>
+              <DinerDash />
             </PrivateRoute>
           </Switch>
         </main>
