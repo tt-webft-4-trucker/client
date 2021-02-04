@@ -19,7 +19,11 @@ import Home from "./pages/Home";
 import AddTruck from "./pages/AddTruck";
 import EditTruck from './pages/EditTruck';
 import PrivateRoute from './utils/PrivateRoute';
-import OperatorDashboard from './components/OperatorDash';
+
+import OperatorDash from './components/OperatorDash';
+import DinerDash from './components/DinerDash';
+import NewMenu from "./pages/Menu/NewMenu";
+
 
 import Map from './pages/Map';
 
@@ -27,6 +31,7 @@ import Map from './pages/Map';
 // Utilities 
 import { UserContext } from "./utils/UserContext";
 import { useProfile } from './utils/useProfile'
+import MenuEditForm from "./pages/Menu/MenuEditForm";
 
 function App() {
   const [user, setUser] = useProfile();
@@ -43,10 +48,23 @@ function App() {
             <Route path="/trucks/:id" component={FoodTruckView} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <PrivateRoute path='/operator/:id' component={OperatorDashboard}/>
+
+
+            <PrivateRoute path='/operator/:id' component={OperatorDash}/>
             <PrivateRoute path='/edittruck/:id' component={EditTruck}/>
 
+
             <Route path="/map" component={ Map } />
+
+            <Route path="/newmenu" component={NewMenu}/>
+    
+            <PrivateRoute path='/operator/:id' component={OperatorDash}>
+              <OperatorDash />
+            </PrivateRoute>
+            <PrivateRoute path='/dinerdash' component={DinerDash}>
+              <DinerDash />
+            </PrivateRoute>
+
           </Switch>
         </main>
 
