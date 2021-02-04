@@ -6,6 +6,9 @@ import Schema from "../../Schema/LoginSchema.js";
 import LoginForm from "./LoginForm.js";
 import { UserContext } from "../../../../utils/UserContext";
 
+import styled from 'styled-components';
+
+
 const initialFormValues = {
   email: "",
   password: "",
@@ -85,13 +88,31 @@ export default function Login() {
         />
       </div>
 
-      <div>
+      <ButtonStyle>
         <button type="link-to-reg">
-          <a class="link-to-reg" href="/register">
+          <a className="link-to-reg" href="/register">
             New to Food Truck Tracker? Click Here
           </a>
         </button>
-      </div>
+      </ButtonStyle>
     </div>
   );
 }
+
+
+const ButtonStyle = styled.div`
+
+    /* width: 30rem; */
+    /* margin: auto; */
+    /* background-color: pink; */
+    display: flex;
+    justify-content: center;
+
+    .link-to-reg {
+      text-decoration: none;
+      font-size: 1.2rem;
+      margin: auto;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+`
