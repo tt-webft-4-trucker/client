@@ -44,7 +44,6 @@ export default function AddTruckForm( props ){
             img_url: formVals.img_url,
         }
         postTruck( newTruck );
-        console.log( "Truck object added: ", newTruck )
     }
     
     const handleChange = ( name, value ) => {
@@ -78,7 +77,6 @@ export default function AddTruckForm( props ){
   return(
       
     <div>
-        {console.log("Operator ID: ", user.operator_id)}
         <div id="main-wrapper">
             <div className="container">
                 <div className="row gtr-200">
