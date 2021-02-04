@@ -19,8 +19,12 @@ import Home from "./pages/Home";
 import AddTruck from "./pages/AddTruck";
 import EditTruck from './pages/EditTruck';
 import PrivateRoute from './utils/PrivateRoute';
+
 import OperatorDash from './components/OperatorDash';
 import DinerDash from './components/DinerDash';
+import NewMenu from "./pages/Menu/NewMenu";
+
+
 
 // Utilities 
 import { UserContext } from "./utils/UserContext";
@@ -47,6 +51,10 @@ function App() {
             </PrivateRoute>
             <PrivateRoute path='/dinerdash' component={DinerDash}>
               <DinerDash />
+            </PrivateRoute>
+            <Route path="/newmenu" component={NewMenu}/>
+            <PrivateRoute path='/operator/:id'>
+              <OperatorDashboard />
             </PrivateRoute>
           </Switch>
         </main>
