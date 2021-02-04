@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import * as Yup from "yup";
-import axios from "axios";
+import { axiosWithAuth } from "../../../../utils/axiosWithAuth";
 
 import Schema from "../../Schema/RegisterSchema.js";
 import RegisterForm from "./RegisterForm.js"
@@ -29,7 +29,7 @@ export default function Register() {
   const { setUser } = useContext(UserContext);
 
   const createNewUser = (newUser) => {
-    axios
+    axiosWithAuth()
       .post("https://truck-server.herokuapp.com/profiles/", newUser)
       .then((res) => {
         setUser(res.data.profile);

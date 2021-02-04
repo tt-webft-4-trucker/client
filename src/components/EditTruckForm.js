@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 import * as yup from 'yup';
 import schema from '../validation/addTruckSchema';
 
@@ -24,7 +24,8 @@ export default function EditTruckForm( props ){
     const { id } = useParams();
 
     const getTruckById = ( truckID ) => {
-        axios.get( `https://truck-server.herokuapp.com/trucks/${truckID}` )
+        axiosWithAuth()
+        .get( `https://truck-server.herokuapp.com/trucks/${truckID}` )
         .then( res => {
             setTruck( res.data );
             setFormVals({
@@ -38,7 +39,8 @@ export default function EditTruckForm( props ){
     }
     
     const editTruck = modifiedTruck => {
-        axios.put( `https://truck-server.herokuapp.com/trucks`, modifiedTruck )
+        axiosWithAuth()
+        .put( `https://truck-server.herokuapp.com/trucks`, modifiedTruck )
         .then( res => setTruck( res.data ) )
         .catch( err => console.log( err ) )
     }

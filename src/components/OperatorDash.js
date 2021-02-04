@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 
 function OperatorDashboard(props) {
@@ -11,7 +11,7 @@ function OperatorDashboard(props) {
     const { id } = useParams();
 
     useEffect(() => {
-        axios   
+        axiosWithAuth()  
             .get(`https://truck-server.herokuapp.com/operator/${id}`)
             .then((res) => {
                 setOperator(res.data)
@@ -30,7 +30,8 @@ function OperatorDashboard(props) {
      * not working yet.
      */
     const deleteTruck = ( truckID ) =>{
-        axios.delete(`https://truck-server.herokuapp.com/trucks/${ truckID }`)
+        axiosWithAuth()
+        .delete(`https://truck-server.herokuapp.com/trucks/${ truckID }`)
         .then( res =>{
             setTrucks(res.data);
             console.log("Trucks: ", trucks)

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-
-
-import axios from 'axios';
+import { axiosWithAuth } from "./utils/axiosWithAuth";
 
 function FoodTruckView(props) {
     const [ truck, setTruck ] = useState();
@@ -13,7 +11,7 @@ function FoodTruckView(props) {
       useEffect(() => {
         // console.log("id is : ")
         console.log(id);
-          axios
+        axiosWithAuth()
             .get(`https://truck-server.herokuapp.com/trucks/${id}`)
             .then((res) => {
                 // console.log(res.data)
