@@ -26,6 +26,8 @@ import NewMenu from "./pages/Menu/NewMenu";
 
 
 
+
+
 // Utilities 
 import { UserContext } from "./utils/UserContext";
 import { useProfile } from './utils/useProfile'
@@ -59,8 +61,6 @@ function App() {
             <PrivateRoute path='/dinerdash' component={DinerDash}>
               <DinerDash />
             </PrivateRoute>
-            
-            
 
           </Switch>
         </main>
