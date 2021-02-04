@@ -1,14 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import styled from 'styled-components';
 
 export default function LoginForm(props) {
   const { disabled, values, change, submit, errors } = props;
 
+  const history = useHistory();
+
   const onSubmit = (e) => {
     e.preventDefault();
     submit();
+    history.push('/');
   };
 
   const onChange = (e) => {
@@ -48,11 +51,9 @@ export default function LoginForm(props) {
             <p>{errors.password}</p>
           </div>
           <div>
-            <Link to="/">
               <button type="submit" disabled={disabled}>
                 Login
               </button>
-            </Link>
           </div>
         </form>
       </div>
