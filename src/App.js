@@ -54,7 +54,7 @@ function App() {
             </PrivateRoute>
             <Route path="/newmenu" component={NewMenu}/>
             <PrivateRoute path='/operator/:id'>
-              <OperatorDashboard />
+              <OperatorDash />
             </PrivateRoute>
           </Switch>
         </main>
