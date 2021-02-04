@@ -42,20 +42,25 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <PrivateRoute path="/newtruck" component={AddTruck} />
-            <PrivateRoute path="/edittruck" component={EditTruck} />
             <Route path="/trucks/:id" component={FoodTruckView} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+
+
+            <PrivateRoute path='/operator/:id' component={OperatorDash}/>
+            <PrivateRoute path='/edittruck/:id' component={EditTruck}/>
+
+            <Route path="/newmenu" component={NewMenu}/>
+    
             <PrivateRoute path='/operator/:id' component={OperatorDash}>
               <OperatorDash />
             </PrivateRoute>
             <PrivateRoute path='/dinerdash' component={DinerDash}>
               <DinerDash />
             </PrivateRoute>
-            <Route path="/newmenu" component={NewMenu}/>
-            <PrivateRoute path='/operator/:id'>
-              <OperatorDash />
-            </PrivateRoute>
+            
+            
+
           </Switch>
         </main>
 
