@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import L from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
-import axios from 'axios'
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 import '../map.css';
 import "leaflet/dist/leaflet.css";
@@ -25,7 +25,8 @@ export default function MapComp( props ){
 
     const [ trucks, setTrucks ] = useState([]);
     useEffect(()=>{
-        axios.get( `https://truck-server.herokuapp.com/trucks` )
+        axiosWithAuth()
+        .get( `https://truck-server.herokuapp.com/trucks` )
         .then( res => {
             setTrucks( res.data )   
          } )
@@ -36,12 +37,12 @@ export default function MapComp( props ){
 return(
     <div className="leaflet-container">
         
-        <MapContainer center={[39.954632, -82.801697]} zoom={13} scrollWheelZoom={true} minZoom={3}>
+        <MapContainer center={[33.684566,  -117.826508]} zoom={13} scrollWheelZoom={true} minZoom={3}>
         <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
          />
-        <Marker position={[39.954632, -82.801697]} icon={ userMarker }>
+        <Marker position={[33.684566,  -117.826508]} icon={ userMarker }>
         </Marker>
         
         {
