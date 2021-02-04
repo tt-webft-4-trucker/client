@@ -102,9 +102,6 @@ export default function Login() {
 
 const ButtonStyle = styled.div`
 
-    /* width: 30rem; */
-    /* margin: auto; */
-    /* background-color: pink; */
     display: flex;
     justify-content: center;
 
