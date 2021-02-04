@@ -25,7 +25,7 @@ import DinerDash from './components/DinerDash';
 import NewMenu from "./pages/Menu/NewMenu";
 
 
-import Map from './pages/Map';
+
 
 
 // Utilities 
@@ -52,9 +52,6 @@ function App() {
 
             <PrivateRoute path='/operator/:id' component={OperatorDash}/>
             <PrivateRoute path='/edittruck/:id' component={EditTruck}/>
-
-
-            <Route path="/map" component={ Map } />
 
             <Route path="/newmenu" component={NewMenu}/>
     

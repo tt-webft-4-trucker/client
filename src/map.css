@@ -1,0 +1,8 @@
+.leaflet-container { 
+    height: 500px; width:1024px; 
+}
+
+.leaflet-popup {
+    top: -130px !important;
+}
+
