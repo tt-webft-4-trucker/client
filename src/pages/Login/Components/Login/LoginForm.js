@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import styled from 'styled-components';
 
@@ -47,9 +48,11 @@ export default function LoginForm(props) {
             <p>{errors.password}</p>
           </div>
           <div>
-            <button type="submit" disabled={disabled}>
-              Login
-            </button>
+            <Link to="/">
+              <button type="submit" disabled={disabled}>
+                Login
+              </button>
+            </Link>
           </div>
         </form>
       </div>
