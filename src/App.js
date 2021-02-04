@@ -29,6 +29,7 @@ import NewMenu from "./pages/Menu/NewMenu";
 // Utilities 
 import { UserContext } from "./utils/UserContext";
 import { useProfile } from './utils/useProfile'
+import MenuEditForm from "./pages/Menu/MenuEditForm";
 
 function App() {
   const [user, setUser] = useProfile();

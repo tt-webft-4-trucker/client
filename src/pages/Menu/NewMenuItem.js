@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import MenuEditForm from './MenuEditForm'
 
 
 export default function NewMenuItem(props) {
     const { menuItems, setMenuItems } = props;
+    console.log(menuItems)
+    const [isEditing, setIsEditing] = useState(false)
     const [formValues, setFormValues] = useState ({
         dishname: '',
         dishdescription: '',
@@ -11,11 +14,23 @@ export default function NewMenuItem(props) {
     })
     const [errors, setErrors] = useState({name:''})
 
-
+    useEffect(() => {}, [menuItems])
+  
+   const addDish = (newDish, originalDish) => {
+       console.log(newDish, originalDish)
+        const existingDish = menuItems.find((menuItem) => (
+            menuItem.dishname === originalDish.dishname))
+        let filteredMenuItems;
+        if(existingDish){
+        filteredMenuItems = menuItems.filter(menuItem => (menuItem.dishname !== originalDish.dishname))
+        console.log(filteredMenuItems)
+        }
+        filteredMenuItems ? setMenuItems([...filteredMenuItems, newDish]) : setMenuItems([...menuItems, newDish])
+    }
 
     const onSubmit = (e) => {
         e.preventDefault()
-        setMenuItems( [...menuItems, formValues] )
+        addDish(formValues)
         setFormValues({
             dishname: '',
             dishdescription: '',
@@ -31,7 +46,6 @@ export default function NewMenuItem(props) {
             [name]: value,
           });
     }
-
     return(
         <div>
             <h1>Add Menu Item</h1>
@@ -49,7 +63,6 @@ export default function NewMenuItem(props) {
                             />
                         </label>
                         <p>{errors.dishname}</p>
-
                         <label>
                             Dish Description:
                             <input
@@ -86,7 +99,7 @@ export default function NewMenuItem(props) {
                     </div>
                     <div>
                         <button type="submit">
-                            Submit Dish
+                            Create Dish
                         </button>
                     </div>
                 </form>
@@ -98,6 +111,10 @@ export default function NewMenuItem(props) {
                             <p>{menuItem.dishdescription}</p>
                             <p>{menuItem.price}</p>
                             <p>{menuItem.image}</p>
+                            <button onClick={()=> setIsEditing(true)}>Edit Dish</button>
+                            {isEditing && 
+                                <MenuEditForm itemToEdit={menuItem} addDish={addDish} setIsEditing={setIsEditing}/>
+                            }
                         </div>
                     ))}
                 </div>

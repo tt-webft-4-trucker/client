@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 import axios from 'axios';
 import NewMenuItem from './NewMenuItem';
+import MenuEditForm from './MenuEditForm';
 
 //TODO: import items from backend to populate menu
 //TODO: schema
 //TODO: make the menu populate when accessed
 //TODO: also route everything
 
-function NewMenu({ menuValues, setMenuValues }){
+function NewMenu( props ){
     const [formValues, setFormValues] = useState ({})
     const [errors, setErrors] = useState({})
     const [disabled, setDisabled] = useState(true)
@@ -16,7 +17,6 @@ function NewMenu({ menuValues, setMenuValues }){
 
 
 const onFormSubmit = event => {
-
 }
 
 
@@ -27,6 +27,7 @@ return(
         <NewMenuItem
         menuItems={menuItems}
         setMenuItems={setMenuItems}
+        newMenuProps={props}
     />
 </div>
 </div>
