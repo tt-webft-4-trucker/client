@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 
-import axios from 'axios';
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 import * as yup from 'yup';
 import schema from '../validation/addTruckSchema';
 import { UserContext } from "../utils/UserContext";
@@ -29,7 +29,8 @@ export default function AddTruckForm( props ){
 
 
     const postTruck = newTruck => {
-        axios.post( `https://truck-server.herokuapp.com/trucks`, newTruck )
+        axiosWithAuth()
+        .post( `https://truck-server.herokuapp.com/trucks`, newTruck )
         .then( res => setTruck( res.data ) )
         .catch( err => console.log( err ) );
     }

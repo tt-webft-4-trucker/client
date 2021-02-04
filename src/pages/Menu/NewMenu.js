@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
-import axios from 'axios';
+import { axiosWithAuth } from '../../utils/axiosWithAuth'
 import NewMenuItem from './NewMenuItem';
 import MenuEditForm from './MenuEditForm';
 
