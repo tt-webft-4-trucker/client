@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 
-function OperatorDashboard(props) {
+function OperatorDashboard( props ) {
     const [ operator, setOperator ] = useState();
     const [ trucks, setTrucks ] = useState([]);
 
     const { id } = useParams();
+    const { history } = useHistory();
 
     useEffect(() => {
         axiosWithAuth()  
@@ -20,7 +21,7 @@ function OperatorDashboard(props) {
             .catch((err) => {
                 console.log(err);
             })
-    }, [id] );
+    }, [ id ] );
 
     /**
      * DO NOT USE
@@ -33,8 +34,7 @@ function OperatorDashboard(props) {
         axiosWithAuth()
         .delete(`https://truck-server.herokuapp.com/trucks/${ truckID }`)
         .then( res =>{
-            setTrucks(res.data);
-            console.log("Trucks: ", trucks)
+            setTrucks([...trucks, res.data]);
         })
         .catch( err => console.log( err ) )
     }
@@ -65,7 +65,7 @@ function OperatorDashboard(props) {
                                 <p className='info'>Average Rating: {item.customer_rating_avg}</p>
                                 <p className='info lastItem'>Location: {item.current_location}</p>
                                 <Link to={`/edittruck/${item.truck_id}`} className="button icon solid">Edit</Link>
-                                <button className="button solid danger">Delete</button>
+                                <button onClick={ () =>{ deleteTruck( item.truck_id ) } }className="button solid danger">Delete</button>
                             </div>
                         )
                     })
