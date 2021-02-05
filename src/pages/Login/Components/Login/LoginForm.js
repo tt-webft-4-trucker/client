@@ -51,9 +51,14 @@ export default function LoginForm(props) {
             <p>{errors.password}</p>
           </div>
           <div>
-              <button type="submit" disabled={disabled}>
-                Login
-              </button>
+            <button type="submit" disabled={disabled}>
+              Login
+            </button>
+          </div>
+          <div>
+            <button>
+              <Link to="/">Home</Link>
+            </button>
           </div>
         </form>
       </div>
