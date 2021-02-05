@@ -72,6 +72,12 @@ export default function LoginForm(props) {
             <button type="submit" disabled={disabled}>
               Create Account
             </button>
+            <button>
+
+            <Link to='/'type="submit">
+            Home
+            </Link>
+            </button>
           </div>
         </form>
        </RegisterStyle> 
