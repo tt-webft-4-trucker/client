@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MenuEditForm from './MenuEditForm'
 import { axiosWithAuth } from "../../utils/axiosWithAuth.js"
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 
 
 export default function NewMenuItem(props) {
@@ -16,7 +16,7 @@ export default function NewMenuItem(props) {
     const [errors, setErrors] = useState({name:''})
 
     useEffect(() => {}, [menuItems])
-
+    
     const { truck_id } = useParams();
   
    const addDish = (newDish, originalDish) => {
@@ -36,13 +36,12 @@ export default function NewMenuItem(props) {
         console.log( typeof truck_id);
         axiosWithAuth().post('https://truck-server.herokuapp.com/menu/item', {...formValues, truck_id:Number(truck_id)})
         .then((res) => {
-            console.log(res.data)
+            addDish(res.data)
 
         })
         .catch((err) => {
             console.log("MENU ERROR: ", err)
         })
-        addDish(formValues)
 
         setFormValues({
             item_name: '',
