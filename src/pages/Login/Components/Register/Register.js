@@ -26,7 +26,25 @@ export default function Register() {
   const [buttonDisable, setButtonDisable] = useState(buttonDisabled);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [errors, setErrors] = useState(initialFormErrors);
+
+  const [ location, setLocation ] = useState();
+
+
   const { setUser } = useContext(UserContext);
+
+
+  const getLocation = () =>{
+    navigator.geolocation.getCurrentPosition(function(position) {
+        setLocation({
+            lat: position.coords.latitude,
+            long: position.coords.longitude
+        })
+      });
+  }
+  
+  useEffect(()=>{
+      getLocation();
+  }, [])
 
   const createNewUser = (newUser) => {
     axiosWithAuth()
@@ -63,12 +81,16 @@ export default function Register() {
     });
   };
 
+
+
+
   const submitForm = () => {
     const newUser = {
       name: formValues.username,
       email: formValues.email,
       password: formValues.password,
       role: formValues.role,
+      current_location:location,
     };
     createNewUser(newUser);
   };
@@ -77,6 +99,7 @@ export default function Register() {
     Schema.isValid(formValues).then((valid) => {
       setButtonDisable(!valid);
     });
+    console.log("LOCATION: ", location)
   }, [formValues]);
 
   return (

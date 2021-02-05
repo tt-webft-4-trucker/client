@@ -25,7 +25,20 @@ export default function AddTruckForm( props ){
  const [ formVals, setFormVals ] = useState( initFormVals );
  const [ formErrs, setFormErrs ] = useState( initFormErrors );
  const [ disabled, setDisabled ] = useState( initialDisabled );
-
+ 
+ const [ location, setLocation ] = useState();
+ 
+    const getLocation = () =>{
+        navigator.geolocation.getCurrentPosition(function(position) {
+            setLocation({
+                lat: position.coords.latitude,
+                long: position.coords.longitude
+            })
+          });
+    }
+    useEffect(()=>{
+        getLocation();
+    }, [])
 
     const postTruck = newTruck => {
         axiosWithAuth()
@@ -42,6 +55,7 @@ export default function AddTruckForm( props ){
             name: formVals.name.trim(),
             cuisine_type: formVals.cuisine_type.trim(),
             img_url: formVals.img_url,
+            current_location:JSON.stringify(location),
         }
         postTruck( newTruck );
     }
@@ -73,6 +87,7 @@ export default function AddTruckForm( props ){
       }
     useEffect( () => {
         schema.isValid( formVals ).then( valid => setDisabled( !valid ) )
+        console.log("LOCATION: ", JSON.stringify(location))
     }, [ formVals ])
   return(
       

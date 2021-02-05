@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import L from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+
+import { UserContext } from "../utils/UserContext";
 
 import '../map.css';
 import "leaflet/dist/leaflet.css";
@@ -23,6 +25,9 @@ const userMarker = L.icon({
 
 export default function MapComp( props ){
 
+    const { user } = useContext(UserContext);
+    const userLocation = JSON.parse(user.current_location)
+
     const [ trucks, setTrucks ] = useState([]);
     useEffect(()=>{
         axiosWithAuth()
@@ -32,17 +37,14 @@ export default function MapComp( props ){
          } )
         .catch( err => console.log( err ) );
     },[])
-
-
 return(
     <div className="leaflet-container">
-        
-        <MapContainer center={[33.684566,  -117.826508]} zoom={13} scrollWheelZoom={true} minZoom={3}>
+        <MapContainer center={[userLocation["lat"],  userLocation["long"]]} zoom={13} scrollWheelZoom={true} minZoom={3}>
         <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
          />
-        <Marker position={[33.684566,  -117.826508]} icon={ userMarker }>
+        <Marker position={[userLocation["lat"],  userLocation["long"]]} icon={ userMarker }>
         </Marker>
         
         {
