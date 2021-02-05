@@ -1,28 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import MenuEditForm from './MenuEditForm'
+import { axiosWithAuth } from "../../utils/axiosWithAuth.js"
+import { useParams } from 'react-router-dom'
 
 
 export default function NewMenuItem(props) {
     const { menuItems, setMenuItems } = props;
-    console.log(menuItems)
     const [isEditing, setIsEditing] = useState(false)
     const [formValues, setFormValues] = useState ({
-        dishname: '',
-        dishdescription: '',
-        price: '',
-        image: '',
+        item_name: '',
+        item_description: '',
+        item_price: '',
+        item_photos: '',
     })
     const [errors, setErrors] = useState({name:''})
 
     useEffect(() => {}, [menuItems])
+
+    const { truck_id } = useParams();
   
    const addDish = (newDish, originalDish) => {
        console.log(newDish, originalDish)
         const existingDish = menuItems.find((menuItem) => (
-            menuItem.dishname === originalDish.dishname))
+            menuItem.item_name === originalDish.item_name))
         let filteredMenuItems;
         if(existingDish){
-        filteredMenuItems = menuItems.filter(menuItem => (menuItem.dishname !== originalDish.dishname))
+        filteredMenuItems = menuItems.filter(menuItem => (menuItem.item_name !== originalDish.item_name))
         console.log(filteredMenuItems)
         }
         filteredMenuItems ? setMenuItems([...filteredMenuItems, newDish]) : setMenuItems([...menuItems, newDish])
@@ -30,12 +33,22 @@ export default function NewMenuItem(props) {
 
     const onSubmit = (e) => {
         e.preventDefault()
+        console.log( typeof truck_id);
+        axiosWithAuth().post('https://truck-server.herokuapp.com/menu/item', {...formValues, truck_id:Number(truck_id)})
+        .then((res) => {
+            console.log(res.data)
+
+        })
+        .catch((err) => {
+            console.log("MENU ERROR: ", err)
+        })
         addDish(formValues)
+
         setFormValues({
-            dishname: '',
-            dishdescription: '',
-            price: '',
-            image: '',
+            item_name: '',
+            item_description: '',
+            item_price: '',
+            item_photos: '',
         })
     }
 
@@ -57,19 +70,19 @@ export default function NewMenuItem(props) {
                             Dish Name: 
                             <input
                                 type="text"
-                                name="dishname"
+                                name="item_name"
                                 onChange={onChange}
-                                value={formValues.dishname}
+                                value={formValues.item_name}
                             />
                         </label>
-                        <p>{errors.dishname}</p>
+                        <p>{errors.item_name}</p>
                         <label>
                             Dish Description:
                             <input
                             type="text"
-                            name="dishdescription"
+                            name="item_description"
                             onChange={onChange}
-                            value={formValues.dishdescription}
+                            value={formValues.item_description}
                             />
                         </label>
 
@@ -78,23 +91,23 @@ export default function NewMenuItem(props) {
                             Price:
                         <input
                             type="number"
-                            name="price"
+                            name="item_price"
                             onChange={onChange}
-                            value={formValues.price}
+                            value={formValues.item_price}
                         />
                         </label>
-                        <p>{errors.price}</p>
+                        <p>{errors.item_price}</p>
 
                         <label>
-                            Image:
+                            Picture:
                             <input
                             type="text"
-                            name="image"
+                            name="item_photos"
                             onChange={onChange}
-                            value={formValues.image}
+                            value={formValues.item_photos}
                             />
                         </label>
-                        <p>{errors.image}</p>
+                        <p>{errors.item_photos}</p>
 
                     </div>
                     <div>
@@ -107,10 +120,10 @@ export default function NewMenuItem(props) {
 
                     {menuItems && menuItems.map(menuItem => (
                         <div>
-                            <p>{menuItem.dishname}</p>
-                            <p>{menuItem.dishdescription}</p>
-                            <p>{menuItem.price}</p>
-                            <p>{menuItem.image}</p>
+                            <p>{menuItem.item_name}</p>
+                            <p>{menuItem.item_description}</p>
+                            <p>{menuItem.item_price}</p>
+                            <p>{menuItem.item_photos}</p>
                             <button onClick={()=> setIsEditing(true)}>Edit Dish</button>
                             {isEditing && 
                                 <MenuEditForm itemToEdit={menuItem} addDish={addDish} setIsEditing={setIsEditing}/>
