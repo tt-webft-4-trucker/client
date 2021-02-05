@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import { UserContext } from "../utils/UserContext";
 
-import Map from '../pages/Map';
+import Map from "../pages/Map";
 
 export default function DinerDash() {
   const [diner, setDiner] = useState();
@@ -36,7 +36,6 @@ export default function DinerDash() {
                 <div>
                   <h2>Username:{diner.name}</h2>
                   <Map />
-                  <div>BUILD TRUCK FAVORITES</div>
                 </div>
               </section>
             </div>

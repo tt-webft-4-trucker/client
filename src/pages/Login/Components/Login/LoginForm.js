@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export default function LoginForm(props) {
   const { disabled, values, change, submit, errors } = props;
@@ -48,11 +48,14 @@ export default function LoginForm(props) {
             <p>{errors.password}</p>
           </div>
           <div>
-            <Link to="/">
-              <button type="submit" disabled={disabled}>
-                Login
-              </button>
-            </Link>
+            <button type="submit" disabled={disabled}>
+              Login
+            </button>
+          </div>
+          <div>
+            <button>
+              <Link to="/">Home</Link>
+            </button>
           </div>
         </form>
       </div>
@@ -60,18 +63,21 @@ export default function LoginForm(props) {
   );
 }
 
+const LoginStyle = styled.div`
+  background-color: white;
+  border: 1px solid #cdcdcd;
+  border-radius: 8px;
+  width: 30rem;
+  padding: 2rem;
+  margin: auto;
+  margin-bottom: 2rem;
 
-  const LoginStyle = styled.div`
-    background-color: white;
-    border: 1px solid #CDCDCD;
-    border-radius: 8px;
-    width: 30rem;
-    padding: 2rem;
-    margin: auto;
-    margin-bottom: 2rem;
-
-    h1 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-  `
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  button {
+    padding-right: 2rem;
+    margin-right: 2rem;
+  }
+`;

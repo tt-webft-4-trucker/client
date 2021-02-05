@@ -1,6 +1,6 @@
 import React from "react";
-import styled from 'styled-components';
-
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export default function LoginForm(props) {
   const { disabled, values, change, submit, errors } = props;
@@ -72,9 +72,15 @@ export default function LoginForm(props) {
             <button type="submit" disabled={disabled}>
               Create Account
             </button>
+            <button>
+
+            <Link to='/'type="submit">
+            Home
+            </Link>
+            </button>
           </div>
         </form>
-       </RegisterStyle> 
+      </RegisterStyle>
     </div>
   );
 }
@@ -85,25 +91,28 @@ const H1style = styled.div`
   padding-bottom: 1rem;
   font-size: 1.2rem;
   color: black;
-`
+`;
 
 const RegisterStyle = styled.div`
-background-color: white;
-border: 1px solid #CDCDCD;
-border-radius: 8px;
-width: 34rem;
-padding: 2rem;
-margin: auto;
-margin-bottom: 2rem;
+  background-color: white;
+  border: 1px solid #cdcdcd;
+  border-radius: 8px;
+  width: 34rem;
+  padding: 2rem;
+  margin: auto;
+  margin-bottom: 2rem;
 
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    opacity: 88%;
+  }
 
-h3 {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-  opacity: 88%;
-}
-
-label{
-  opacity: 88%;
-}
-`
+  label {
+    opacity: 88%;
+  }
+  button {
+    padding-right: 2rem;
+    margin-right: 2rem;
+  }
+`;
