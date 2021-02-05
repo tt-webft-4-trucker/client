@@ -3,6 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import * as yup from 'yup';
 import schema from '../validation/addTruckSchema';
+import styled from 'styled-components';
+
 
 const initFormVals = {
     name: '',
@@ -97,12 +99,15 @@ export default function EditTruckForm( props ){
 
   return(
     <div id="main-wrapper">
+        <EditStyle>
             <div className="container">
                 <div className="row gtr-200">
                     <div className="col-8 col-12-large imp-medium">
+                    <h2>Edit Truck</h2>
+
                         <div id="content">
                             <section className="last">
-                                <h2>Edit Truck</h2>
+                                {/* <h2>Edit Truck</h2> */}
                                 <form onSubmit={ submitEdit }>
                                 <div className='errors'>
                                     <div>{formErrs.name}</div>
@@ -125,6 +130,24 @@ export default function EditTruckForm( props ){
                     </div>
                 </div>
             </div>
-        </div>
+        </EditStyle>
+    </div>
   );
 }
+
+const EditStyle = styled.div`
+    width: 34rem;
+    margin: auto;
+
+    #content {
+        background-color: #F8F8F8;
+        padding: 2rem;
+        border: 1px solid #CDCDCD;
+        border-radius: 8px;
+        margin-top:-14px;
+    }
+
+    button {
+        margin-top: 14px;
+    }
+`
